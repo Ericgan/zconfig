@@ -2,7 +2,15 @@
 
 模仿去哪儿网 QConfig
 
-技术栈：SpringBoot，MyBatis，MySQL，Kafka，Redis
+技术栈：
+  SpringCloud（服务框架）
+  SpringBoot（基础）
+  SpringSecurity（权限）
+  MyBatis（ORM）
+  MySQL（数据库）
+  Kafka（消息队列）
+  Redis（NoSQL）
+  Elasticsearch（搜索）
 
 模块说明
   admin：zconfig上传，版本处理，文件推送，权限管理
