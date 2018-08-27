@@ -1,8 +1,10 @@
 package com.ccsu.client.service.impl;
 
+import com.ccsu.client.config.AppConfig;
 import com.ccsu.client.service.HotConfigOnFieldManager;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -19,7 +21,14 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class HotConfigOnFieldManagerImpl implements HotConfigOnFieldManager {
 
+    private AppConfig appConfig;
+
     private Map<String, Map<String, String>> configMap = new ConcurrentHashMap<>();
+
+    @Autowired
+    public HotConfigOnFieldManagerImpl(AppConfig appConfig) {
+        this.appConfig = appConfig;
+    }
 
     @Override
     public void setConfig(String key, Map<String, String> map) {
@@ -33,6 +42,7 @@ public class HotConfigOnFieldManagerImpl implements HotConfigOnFieldManager {
 
     @Override
     public Map<String, String> getConfigFromRemote(String key) {
+        log.info("app name : {}     app token : {}", appConfig.getName(), appConfig.getToken());
         // TODO: 2018/8/27 请求server，更新config
         HashMap<String, String> map = Maps.newHashMap();
         map.put("name", "zhanghang");
